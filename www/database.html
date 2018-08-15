@@ -45,11 +45,9 @@
       me.querySelector('.todos').innerHTML = html.join("");
     }
     
-    const deleteTodo = (todoId) => {
-      API.del('todosCRUD', `/todos/object/${team}/${todoId}`)
-        .then((response) => {
-          updateTodo();
-        }, err => console.log(err));
+    const deleteTodo = async (todoId) => {
+      await API.del('todosCRUD', `/todos/object/${team}/${todoId}`)
+      updateTodo();
     }
   </script>
 </ons-page>
