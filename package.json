@@ -1,0 +1,29 @@
+{
+  "name": "monaca-template-onsenui-v2-js-minimum",
+  "scripts": {
+    "watch": "node node_modules/gulp/bin/gulp.js watch"
+  },
+  "dependencies": {
+    "aws-amplify": "^1.0.6",
+    "cordova-custom-config": "5.0.2",
+    "cordova-plugin-splashscreen": "5.0.1",
+    "cordova-plugin-whitelist": "1.3.3",
+    "monaca-plugin-monaca-core": "3.2.0"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-custom-config": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-plugin-whitelist": {},
+      "monaca-plugin-monaca-core": {}
+    }
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "babelify": "^8.0.0",
+    "browserify": "^16.2.2",
+    "gulp": "^3.9.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}

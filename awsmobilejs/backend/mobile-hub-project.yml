@@ -1,0 +1,59 @@
+--- !com.amazonaws.mobilehub.v0.Project 
+apps:
+  web: !com.amazonaws.mobilehub.v0.AppDO {}
+features:
+  cloudlogic: !com.amazonaws.mobilehub.v0.CloudLogic 
+    components:
+      todosCRUD: !com.amazonaws.mobilehub.v0.API 
+        attributes:
+          name: todosCRUD
+          requires-signin: false
+          sdk-generation-stage-name: Development
+        paths:
+          /todos: !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/todos-20180815100255.zip
+            description: 'Handler for calls to resource path : /todos/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: 6pGm6jmN9HbPgn9MXIkc6gntPGcszaR7DHW5YodChKI=
+            memorySize: '128'
+            modified: '2018-08-15T01:04:36.578+0000'
+            name: todos
+            runtime: nodejs6.10
+            timeout: '3'
+            version: 2RquFkTKnyW9wx_anie0QCTs7N1vS31x
+          '/todos/{proxy+}': !com.amazonaws.mobilehub.v0.Function 
+            codeFilename: uploads/todos-20180815100255.zip
+            description: 'Handler for calls to resource path : /todos/{proxy+}'
+            enableCORS: true
+            environment: {}
+            handler: lambda.handler
+            hashcode: 6pGm6jmN9HbPgn9MXIkc6gntPGcszaR7DHW5YodChKI=
+            memorySize: '128'
+            modified: '2018-08-15T01:04:36.578+0000'
+            name: todos
+            runtime: nodejs6.10
+            timeout: '3'
+            version: __gRWSPRjwA_RMgHzV047oU9SEXJIcDF
+  database: !com.amazonaws.mobilehub.v0.Database 
+    components:
+      database-nosql: !com.amazonaws.mobilehub.v0.NoSQLDatabase 
+        tables:
+          - !com.amazonaws.mobilehub.v0.NoSQLTable 
+            attributes:
+              team: S
+              text: S
+              todoId: N
+            hashKeyName: team
+            hashKeyType: S
+            rangeKeyName: todoId
+            rangeKeyType: N
+            tableName: ___DYNAMIC_PREFIX___-todos
+            tablePrivacy: public
+  mobile-analytics: !com.amazonaws.mobilehub.v0.Pinpoint 
+    components:
+      analytics: !com.amazonaws.mobilehub.v0.PinpointAnalytics {}
+  sign-in: !com.amazonaws.mobilehub.v0.SignIn {}
+name: MonacaDB
+region: us-east-1

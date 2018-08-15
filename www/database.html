@@ -1,0 +1,55 @@
+<ons-page>
+  <ons-list>
+    <ons-list-item>
+      <ons-input id="text" modifier="underbar" placeholder="ブログ記事を書く" float></ons-input>
+    </ons-list-item>
+    <ons-list-item>
+      <ons-button modifier="large--quiet" id="save">保存</ons-button>
+    </ons-list-item>
+    <div class="todos">
+    </div>
+  </ons-list>
+  <script>
+    let Todo = [];
+    let me;
+    const team = 'Monaca';
+    ons.getScriptPage().onInit = function() {
+      me = this;
+      updateTodo();
+      this.querySelector('#save').onclick = async (e) => {
+        const dom = document.getElementById('text');
+        const text = dom.value;
+        const res = await postTodo(text);
+        dom.value = '';
+        updateTodo();
+      };
+    };
+    
+    const postTodo = async (text) => {
+      return await API.post('todosCRUD', '/todos', {
+        body: {
+          todoId: Todo.length + 1,
+          text: text,
+          team: team
+        }
+      })
+    };
+    
+    const updateTodo = async () => {
+      const todos = await API.get('todosCRUD', `/todos/${team}`)
+      Todo = todos;
+      const html = [];
+      for (todo of Todo) {
+        html.push(`<ons-list-item>${todo.text} <div onclick="deleteTodo('${todo.todoId}')"> (削除)</div></ons-list-item>`);
+      }
+      me.querySelector('.todos').innerHTML = html.join("");
+    }
+    
+    const deleteTodo = (todoId) => {
+      API.del('todosCRUD', `/todos/object/${team}/${todoId}`)
+        .then((response) => {
+          updateTodo();
+        }, err => console.log(err));
+    }
+  </script>
+</ons-page>
