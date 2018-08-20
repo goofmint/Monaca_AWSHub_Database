@@ -10,7 +10,7 @@ gulp.task("default", () => {
     .transform(babelify, {presets: ['es2015']})
     .bundle()
     .pipe(source("app.js"))
-    .pipe(gulp.dest("www/js"));
+    .pipe(gulp.dest("./js"));
 });
 
 gulp.task('watch', function(){
